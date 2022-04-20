@@ -1,18 +1,18 @@
 public class StepTracker {
-    static int dailyGoal = 10000;
-    static int[][] totalStepsArr = new int[12][30];
+    private static int dailyGoal = 10000;
+    private static int[][] totalStepsArr = new int[12][30];
 
-    static void saveNumbersOfSteps(int month, int day, int numbersOfSteps) {
+    public static void saveNumbersOfSteps(int month, int day, int numbersOfSteps) {
         totalStepsArr[month][day] = numbersOfSteps;
         System.out.println("Данные сохранены.");
     }
 
-    static void changeDailyGoal(int newDailyGoal) {
+    public static void changeDailyGoal(int newDailyGoal) {
         dailyGoal = newDailyGoal;
         System.out.print("Твоя новая цель - " + dailyGoal + " шагов в день.");
     }
 
-    static void printTotalSteps(int month) {
+    public static void printTotalSteps(int month) {
         int totalSumSteps = 0;
         int maxNumbersOfSteps = 0;
         System.out.println("Твоя статистика по шагам за " + month + " месяц");
@@ -29,13 +29,16 @@ public class StepTracker {
         System.out.println("Среднее количество шагов: " + averageNumbersOfSteps);
         Converter.convert(totalSumSteps);
     }
-    static void BestSeries(int month) {
+    public static void BestSeries(int month) {
         int currentSeries = 0;
         int maxSeries = 0;
         for (int i = 0; i < 30; i++) {
             if (totalStepsArr[month][i] >= dailyGoal) {
-                currentSeries = currentSeries + 1;
-            } if (totalStepsArr[month][i] < dailyGoal) {
+                currentSeries++;
+                if (i == 29 && currentSeries == 1) {
+                    maxSeries = 1;
+                }
+                } else {
                 if (currentSeries > maxSeries) {
                     maxSeries = currentSeries;
                     currentSeries = 0;
@@ -44,5 +47,4 @@ public class StepTracker {
         }
         System.out.println("Лучшая серия дней за месяц: " + maxSeries);
     }
-
 }
