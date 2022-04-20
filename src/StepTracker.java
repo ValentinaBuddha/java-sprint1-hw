@@ -3,7 +3,7 @@ public class StepTracker {
     private static int[][] totalStepsArr = new int[12][30];
 
     public static void saveNumbersOfSteps(int month, int day, int numbersOfSteps) {
-        totalStepsArr[month][day] = numbersOfSteps;
+        totalStepsArr[month-1][day-1] = numbersOfSteps;
         System.out.println("Данные сохранены.");
     }
 
@@ -17,10 +17,10 @@ public class StepTracker {
         int maxNumbersOfSteps = 0;
         System.out.println("Твоя статистика по шагам за " + month + " месяц");
         for (int i = 0; i < 30; i++) {
-            System.out.println(i + " день: " + totalStepsArr[month][i]);
-            totalSumSteps += totalStepsArr[month][i];
-            if (totalStepsArr[month][i] > maxNumbersOfSteps) {
-                maxNumbersOfSteps = totalStepsArr[month][i];
+            System.out.println((i+1) + " день: " + totalStepsArr[month-1][i]);
+            totalSumSteps += totalStepsArr[month-1][i];
+            if (totalStepsArr[month-1][i] > maxNumbersOfSteps) {
+                maxNumbersOfSteps = totalStepsArr[month-1][i];
             }
         }
         int averageNumbersOfSteps = totalSumSteps / 30;
@@ -29,20 +29,18 @@ public class StepTracker {
         System.out.println("Среднее количество шагов: " + averageNumbersOfSteps);
         Converter.convert(totalSumSteps);
     }
+
     public static void BestSeries(int month) {
         int currentSeries = 0;
         int maxSeries = 0;
         for (int i = 0; i < 30; i++) {
-            if (totalStepsArr[month][i] >= dailyGoal) {
+            if (totalStepsArr[month-1][i] >= dailyGoal) {
                 currentSeries++;
-                if (i == 29 && currentSeries == 1) {
-                    maxSeries = 1;
-                }
-                } else {
                 if (currentSeries > maxSeries) {
                     maxSeries = currentSeries;
-                    currentSeries = 0;
                 }
+            } else {
+                currentSeries = 0;
             }
         }
         System.out.println("Лучшая серия дней за месяц: " + maxSeries);

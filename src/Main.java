@@ -3,7 +3,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int month, day, numbersOfSteps, newDailyGoal;
+        int month;
+        int day;
+        int numbersOfSteps;
+        int newDailyGoal;
 
         while (true) {
             printMenu();
@@ -11,21 +14,21 @@ public class Main {
             switch (command) {
                 case 1:
                     while (true) {
-                        System.out.println("Введи номер месяца от 0 до 11.");
+                        System.out.println("Введи номер месяца от 1 до 12.");
                         month = scanner.nextInt();
-                        if (month >= 0) {
+                        if (month >= 1 && month <= 12) {
                             break;
                         } else {
-                            System.out.println("Ошибка! Введено отрицательное значение. Повторите ввод.");
+                            System.out.println("Ошибка! Введено неверное значение. Повторите ввод.");
                         }
                     }
                     while (true) {
-                        System.out.println("Введи день от 0 до 29.");
+                        System.out.println("Введи день от 1 до 30.");
                         day = scanner.nextInt();
-                        if (day >= 0) {
+                        if (day >= 1 && day <= 30) {
                             break;
                         } else {
-                            System.out.println("Ошибка! Введено отрицательное значение. Повторите ввод.");
+                            System.out.println("Ошибка! Введено неверное значение. Повторите ввод.");
                         }
                     }
                     while (true) {
@@ -35,15 +38,15 @@ public class Main {
                             StepTracker.saveNumbersOfSteps(month, day, numbersOfSteps);
                             break;
                         } else {
-                            System.out.println("Ошибка! Введено отрицательное значение. Повторите ввод.");
+                            System.out.println("Ошибка! Введено неверное значение. Повторите ввод.");
                         }
                     }
                     break;
                 case 2:
                     while (true) {
-                        System.out.println("Введи номер месяца от 0 до 11.");
+                        System.out.println("Введи номер месяца от 1 до 12.");
                         month = scanner.nextInt();
-                        if (month >= 0) {
+                        if (month >= 1 && month <= 12) {
                             StepTracker.printTotalSteps(month);
                             StepTracker.BestSeries(month);
                             break;
