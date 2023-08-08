@@ -48,7 +48,7 @@ public class Main {
                         month = scanner.nextInt();
                         if (month >= 1 && month <= 12) {
                             StepTracker.printTotalSteps(month);
-                            StepTracker.BestSeries(month);
+                            StepTracker.bestSeries(month);
                             break;
                         } else {
                             System.out.println("Ошибка! Введено отрицательное значение. Повторите ввод.");

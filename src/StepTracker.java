@@ -30,7 +30,7 @@ public class StepTracker {
         Converter.convert(totalSumSteps);
     }
 
-    public static void BestSeries(int month) {
+    public static void bestSeries(int month) {
         int currentSeries = 0;
         int maxSeries = 0;
         for (int i = 0; i < 30; i++) {
